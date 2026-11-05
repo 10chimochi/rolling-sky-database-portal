@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="doc-title">RS Original Source Song & Composer List</title>
+
+    <!-- ==========================================================================
+       ファビコン設定 (Rolling_Sky_title_logo.ico)
+       ========================================================================== -->
+    <link rel="icon" href="Rolling_Sky_title_logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="Rolling_Sky_title_logo.ico" type="image/x-icon">
+
+    <style>
+        /* ==========================================================================
+           1. CSS変数（ライト／ダークテーマ定義）
+           ========================================================================== */
+        :root {
+            --bg-color: #f4f6f9;
+            --text-color: #333333;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --input-border: #cbd5e1;
+            --header-text: #2c3e50;
+            --sub-header-text: #2980b9;
+            --btn-bg: #e2e8f0;
+            --btn-text: #475569;
+            --btn-hover: #cbd5e1;
+            --table-odd-bg: #f8fafc;
+            --hover-bg: #e2e8f0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+            --toggle-bg: #cbd5e1;
+            --toggle-handle: #ffffff;
+            --toggle-text: #475569;
+            --toggle-border: #94a3b8;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121824;
+            --text-color: #e2e8f0;
+            --text-muted: #94a3b8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --input-border: #475569;
+            --header-text: #f1f5f9;
+            --sub-header-text: #38bdf8;
+            --btn-bg: #334155;
+            --btn-text: #cbd5e1;
+            --btn-hover: #475569;
+            --table-odd-bg: #182232;
+            --hover-bg: #2d3748;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+            --toggle-bg: #1e293b;
+            --toggle-handle: #38bdf8;
+            --toggle-text: #ffffff;
+            --toggle-border: rgba(255, 255, 255, 0.3);
+        }
+
+	/* リンクアイコン用スタイル */
+	.link-icon {
+    	    display: inline-block;
+	    width: 24px;
+	    height: 24px;
+	    background-size: contain;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    vertical-align: middle;
+	}
+
+	/* ライトモード用 */
+	:root {
+	    --icon-url: url('soundtrack_link_light.png'); /* ライトモード用の画像ファイル名 */
+	}
+
+	/* ダークモード用 */
+	[data-theme="dark"] {
+	    --icon-url: url('soundtrack_link_dark.png');  /* ダークモード用の画像ファイル名 */
+	}
+
+	.theme-icon-img {
+	    background-image: var(--icon-url);
+	}
+
+        /* ==========================================================================
+           2. 基本要素 & レイアウト
+           ========================================================================== */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 130px 0 20px 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: var(--header-text);
+            border-left: 5px solid #3498db;
+            padding-left: 10px;
+            margin-top: 0;
+            scroll-margin-top: 90px;
+        }
+
+        h3 {
+            color: var(--sub-header-text);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+            scroll-margin-top: 90px;
+        }
+
+        /* ==========================================================================
+           3. ヘッダー
+           ========================================================================== */
+        .site-header {
+            background-color: #3498db;
+            color: #ffffff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+            padding: 35px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .site-header h1 {
+            margin: 0;
+            font-size: 34px;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: left;
+            flex: 1;
+            transition: font-size 0.3s ease;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-header.scrolled {
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .site-header.scrolled h1 {
+            font-size: 18px;
+        }
+
+        /* ==========================================================================
+           4. コントロールパーツ（検索・フィルター）
+           ========================================================================== */
+        .control-panel {
+            background: var(--card-bg);
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: background 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 220px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input[type="text"] {
+            width: 100%;
+            padding: 10px 36px 10px 14px;
+            font-size: 14px;
+            border: 1px solid var(--input-border);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
+        }
+
+        .search-box input[type="text"]:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .search-clear-icon {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: none;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .search-clear-icon:hover {
+            color: var(--text-color);
+        }
+
+        .lang-select {
+            padding: 10px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s ease, background 0.3s ease, color 0.3s ease;
+        }
+
+        .reset-btn {
+            padding: 10px 16px;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+        }
+
+        .reset-btn:hover {
+            background-color: var(--btn-hover);
+            transform: translateY(-1px);
+        }
+
+        /* トグルスイッチ */
+        .toggle-switch {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            width: 70px;
+            height: 32px;
+            background-color: var(--toggle-bg);
+            border-radius: 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+            padding: 3px;
+            border: 1px solid var(--toggle-border);
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 26px;
+            height: 26px;
+            background-color: var(--toggle-handle);
+            border-radius: 50%;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-label {
+            width: 100%;
+            text-align: right;
+            padding-right: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--toggle-text);
+        }
+
+        [data-theme="dark"] .theme-toggle-switch .toggle-slider {
+            transform: translateX(38px);
+        }
+
+        [data-theme="dark"] .theme-toggle-switch .toggle-label {
+            text-align: left;
+            padding-left: 8px;
+        }
+
+        /* ==========================================================================
+           5. タブ
+           ========================================================================== */
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--text-muted);
+            background: var(--btn-bg);
+            border: none;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            background: var(--btn-hover);
+            color: var(--text-color);
+        }
+
+        .tab-btn.active {
+            background: #3498db;
+            color: #ffffff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==========================================================================
+           6. テーブル
+           ========================================================================== */
+        .table-section {
+            background: var(--card-bg);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            scroll-margin-top: 90px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        th, td {
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 8px 10px;
+            text-align: left;
+            vertical-align: middle;
+            white-space: nowrap;
+            line-height: 1.6;
+        }
+
+        th:first-child, td:first-child {
+            border-left: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+            font-size: 13px;
+            border-top: 1px solid #2980b9;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: var(--table-odd-bg);
+        }
+
+	#originalsourcesong-table th:nth-child(5),
+	#originalsourcesong-table td:nth-child(5) {
+	    text-align: center;
+	}
+
+        /* ==========================================================================
+           7. メニュー
+           ========================================================================== */
+        .menu-toggle-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .drawer-nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 270px;
+            height: 100%;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            z-index: 1002;
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 25px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .drawer-nav.active {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 10px;
+        }
+
+        .drawer-header h4 {
+            margin: 0;
+            color: var(--header-text);
+            font-size: 18px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .drawer-menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .drawer-menu-list li {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .drawer-menu-list a {
+            display: block;
+            padding: 10px 12px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .drawer-menu-list a.nav-parent {
+            font-weight: bold;
+            color: var(--header-text);
+            background-color: var(--hover-bg);
+        }
+
+        .drawer-theme-box {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-color);
+        }
+
+        .drawer-theme-box .lang-select {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--input-border);
+        }
+
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #2c3e50;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 768px) {
+            .site-header { padding: 20px 15px; }
+            .site-header h1 { font-size: 20px; }
+            .tab-btn { padding: 10px 14px; font-size: 13px; flex: 1; text-align: center; }
+            th, td { padding: 6px 6px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+    <h1><a href="Rolling_Sky_Database.html" id="main-title" style="color: #ffffff; text-decoration: none;">RS Original Source Song & Composer List</a></h1>
+    <div class="header-controls">
+        <label class="toggle-switch theme-toggle-switch" title="Theme Switch">
+            <input type="checkbox" class="theme-toggle-checkbox" onchange="toggleTheme()">
+            <span class="toggle-slider"></span>
+            <span class="toggle-label theme-toggle-label">Light</span>
+        </label>
+
+        <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="メニューを開く">
+            <span style="font-size: 18px; line-height: 1;">☰</span>
+            <span style="font-size: 9px; font-weight: bold;">MENU</span>
+        </button>
+    </div>
+</header>
+
+<button class="back-to-top-btn" id="backToTopBtn" aria-label="ページの先頭に戻る" onclick="scrollToTop()">
+    <span style="font-size: 14px; line-height: 1; margin-bottom: 2px;">▲</span>
+    <span style="font-size: 9px; font-weight: bold;">TOP</span>
+</button>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<nav class="drawer-nav" id="drawerNav">
+    <div class="drawer-header">
+        <h4 data-i18n="menu_title">Menu</h4>
+        <button class="close-btn" id="closeMenuBtn">&times;</button>
+    </div>
+
+    <div class="drawer-menu-list">
+	<li><a href="Rolling_Sky_Database.html" class="nav-parent" style="background-color: #2980b9; color: #ffffff;" data-i18n="back_portal">Back to Portal</a></li>
+    </div>
+
+    <div class="drawer-theme-box">
+        <span data-i18n="language">Language</span>
+        <select class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+        </select>
+    </div>
+
+    <div class="drawer-theme-box">
+        <span data-i18n="dark_mode">Dark Mode</span>
+        <label class="toggle-switch theme-toggle-switch" title="Theme Switch">
+            <input type="checkbox" class="theme-toggle-checkbox" onchange="toggleTheme()">
+            <span class="toggle-slider"></span>
+            <span class="toggle-label theme-toggle-label">Light</span>
+        </label>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- コントロールパネル：検索 -->
+    <div class="control-panel">
+        <div class="search-row">
+            <div class="search-box search-input-wrapper">
+                <input type="text" id="searchInput" placeholder="Search..." oninput="handleSearch()">
+                <button class="search-clear-icon" id="searchClearBtn" onclick="clearSearchInput()" title="Clear text">&times;</button>
+            </div>
+            <button class="reset-btn" onclick="resetSearch()" data-i18n="clear_btn">Clear Search</button>
+        </div>
+    </div>
+
+    <!-- 単一テーブルセクション -->
+    <div class="table-section" id="table-section">
+        <table id="originalsourcesong-table">
+            <thead id="table-head">
+                <tr>
+                    <th>No</th>
+                    <th data-i18n="level">Level Name</th>
+                    <th data-i18n="song">Original Source Song</th>
+                    <th data-i18n="composer">Composer</th>
+		    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    /* ==========================================================================
+       1. 多言語対応データ
+       ========================================================================== */
+    const i18nData = {
+        en: {
+            title: "RS Original Source Song & Composer List", back_portal: "Back to Portal",
+            search_placeholder: "Search by word...", clear_btn: "Clear Search",
+            menu_title: "Menu", language: "Language", dark_mode: "Dark Mode",
+	    level: "Level Name", song: "Original Source Song", composer: "Composer"
+        },
+        ja: {
+            title: "ローリングスカイ　原曲＆作曲者集", back_portal: "ポータルに戻る",
+            search_placeholder: "単語で検索...", clear_btn: "検索クリア",
+            menu_title: "メニュー", language: "言語", dark_mode: "ダークモード",
+	    level: "ステージ名", song: "原曲", composer: "作曲者"
+        }
+    };
+
+    /* ==========================================================================
+       2. データベースデータ (テンプレ：{no: "", level: "", song: "", composer: "", url: "https://"})
+       ========================================================================== */
+    const OriginalSongData = [
+        {no: "Level 12", level: "Ghost Dance", song: "Dance fo the Violins", composer: "F-777", url: "https://youtu.be/JISrUAqMiiw?si=LOsWP3QZLpbCxFzp"},
+	{no: "Level 13", level: "Deep Space", song: "Where's The Rum Gone?!", composer: "F-777", url: "https://youtu.be/Z0ihfzBkJ3s?si=OzVpigM_zSCGDBOn"},
+	{no: "Bonus 2", level: "Monody", song: "Monody", composer: "TheFatRat", url: "https://youtu.be/B7xai5u_tnk?si=upABwwQ9LVxAq0L5"},
+	{no: "Level 15", level: "Kung Fu", song: "Panda Smash", composer: "F-777", url: "https://youtu.be/BhAecMoDQ2U?si=5k25dOSS2sJ9bvFj"},
+	{no: "Bonus 3", level: "Candy", song: "Candyland", composer: "Tobu", url: "https://youtu.be/IhchfhxvPKI?si=ZVzH7YCceYFRmc89"},
+	{no: "Level 16", level: "1UP", song: "1up [2017 VERSION]", composer: "F-777", url: "https://youtu.be/rFbXzwztKjs?si=eVXtlQZQ5IgP7PBH"},
+	{no: "Bonus 4", level: "8Bits", song: "Munity", composer: "F-777", url: "https://youtu.be/YwaZlqnT5ls?si=-WBMRKG9h_WFQh7d"},
+	{no: "Level 23", level: "Ignite (old)", song: "Ignite Instrumental", composer: "Alan Walker & K-391", url: "https://youtu.be/rsH1A1MX5_Q?si=ntq3JjM6SihHKS_6"},
+	{no: "Level 29", level: "Alone", song: "Alone", composer: "Alan Walker", url: "https://youtu.be/1-xGerv5FOk?si=xaAWrRgB3dHRFt4w"},
+	{no: "Level 30", level: "Faded", song: "Faded", composer: "Alan Walker ", url: "https://youtu.be/60ItHLz5WEA?si=tQzkXF6vh7zXBpNO"},
+	{no: "Level 35", level: "Alone II", song: "Alone", composer: "Marshmello", url: "https://youtu.be/ALZHF5UqnU4?si=35kSNJKD3bhfgnRa"},
+	{no: "Level 37", level: "The Spectre", song: "The Spectre", composer: "Alan Walker", url: "https://youtu.be/wJnBTPUQS5A?si=R-cfHR_yud17IoHK"},
+	{no: "Mini Level 1", level: "Tropical Tides", song: "Tropical Tides", composer: "F-777", url: "https://youtu.be/da5_cAvaV3I?si=nnJGxzcGEjZni7-c"},
+	{no: "Mini Level 2", level: "Gemini", song: "Luigi's Cool Pants", composer: "F-777", url: "https://youtu.be/G3IG5f_ncE0?si=q2ebFSYoD75_5aX0"},
+	{no: "Level 54", level: "Auspicious Jade Rabbit", song: "Firecrackers 2", composer: "F-777", url: "https://youtu.be/KEOFQDtGdsI?si=C33d6teihowxXFat"},
+	{no: "Fanmade Level 2", level: "The Chaos", song: "Guardians", composer: "Bob Bradley & Terry Devine-King<br>(Fron Dancing Line)", url: "https://youtu.be/Qi2ZwNHE3H8?si=9t0iGSxC-hs3592w"},
+	{no: "Fanmade Level 3", level: "Successful Person", song: "Successful Person", composer: "Dio Deer", url: "https://youtu.be/5RKXcEMhdi8?si=bDMKV8TpFdEIyXf_"},
+	{no: "Co-creation Bonus 1", level: "Mutation Crisis", song: "ANARCHY", composer: "Zoftle", url: "https://youtu.be/ZRu4nHpBKDg?si=e8WhQKRW19299FH8"},
+	{no: "Bonus 43", level: "Dino Disco ", song: "Dino Disco", composer: "F-777", url: "https://youtu.be/Sx0GKTtVJ44?si=qYnYwm6ddGskQoCY"},
+	{no: "Bonus 44", level: "Mysterious Trail", song: "System Fix", composer: "F-777", url: "https://youtu.be/jY6KTp_OAJI?si=v6Nb6nN7Wcd8iFpL"},
+	{no: "Bonus 45", level: "Starfield", song: "Cloudwave", composer: "SaMZIng & HJLL", url: "https://soundcloud.com/samzingyeah/hjll-samzing-cloudwave"},
+	{no: "Level 59", level: "Flower Dance", song: "式神-桃花舞姬", composer: "闫东炜", url: "https://youtu.be/vhPH3xiXdHY?si=f1By2K8LazdV60WM"},
+	{no: "Co-creation Bonus 2", level: "Tribal Hunting", song: "Day Dreamer", composer: "F-777", url: "https://youtu.be/ANkJIMsUPYI?si=Rebv_KD6VKsIb7sY"},
+	{no: "Bonus 47", level: "Sweet Paradise", song: "CandyStar", composer: "SaMZIng", url:"https://soundcloud.com/samzingyeah/candystar"},
+	{no: "Bonus 51", level: "Jack-O'-Lantern", song: "The Vampire Warlord (VIP MIX)", composer: "F-777", url: "https://youtu.be/_dS6qv1n434?si=11n4p-rt3ZdZpAkL"},
+	{no: "Level 61", level: "Mecha", song: "Tasukete", composer: "Hookington", url: "https://youtu.be/uu1jFqr1dxQ?si=Py88frGbHInuCY97"},
+	{no: "Co-creation Bonus 3", level: "Lively Spirits", song: "Recursion", composer: "Nix", url: "https://youtu.be/Iin7JeQ7oC0?si=tFWy5Ryz_KD3Qorl"},
+	{no: "Co-creation Bonus 4", level: "Harmonic Streets", song: "AT Show", composer: "AT Master", url: "https://youtu.be/kkfMJhhWb0A?si=IQ9XOrOUelUnI5qf"},
+	{no: "Bonus 52", level: "Snowy Night", song: "ICE pop", composer: "SaMZIng", url: ""},
+	{no: "Level 63", level: "Competition Park", song: "Red Horizon", composer: "Creo", url: "https://youtu.be/kmYgwc4QYhE?si=kAvc0OkiU9KA71GJ"},
+	{no: "Bonus 54", level: "Venus", song: "Begin", composer: "SaMZIng", url: "https://soundcloud.com/samzingyeah/begin"},
+	{no: "Level 64", level: "Happy ", song: "开心病", composer: "闫东炜", url: "https://youtu.be/iNaZ_4e3kEE?si=3VzqJxSXnHzACsXb"},
+	{no: "Fanmade Level 8", level: "The Basketball", song: "", composer: "(From Dancing Line)", url: ""},
+	{no: "Co-creation Bonus 7", level: "Sewing Factory", song: "救赎 (Redemption)", composer: "TDX", url: ""},
+	{no: "Level 66", level: "Chronos", song: "Starry Night", composer: "武言圣", url: "https://youtu.be/LbzRX_pnBEw?si=wqlYASYtZKMej1Vx"},
+	{no: "Level 67", level: "Phantom Thief", song: "Final Showdown", composer: "Hookington", url: "https://youtu.be/UBGTDveF84o?si=3dFgJI8NGQTMzkNX"},
+	{no: "Co-creation Level 10", level: "Disco Tempo", song: "夏日冰沙Club", composer: "一杯猫头", url: ""},
+	{no: "Co-creation Bonus 9", level: "Masked Ball", song: "Macropolis", composer: "MYUKKE.", url: "https://youtu.be/0UhntYbh9mY?si=a-wjf3flOk5STeIT"},
+	{no: "Co-creation Level 11", level: "Starlight Desert", song: "乐动时代", composer: "闫东炜", url: "https://youtu.be/eE_2j5_krIc?si=Q6fuizHMfBy2rD75"},
+	{no: "Co-creation Level 12", level: "Industrial Age", song: "Copying Virtual Riot", composer: "SaMZIng", url: ""},
+	{no: "Bonus 62", level: "Djinni", song: "Band Wagon", composer: "F-777", url: "https://youtu.be/4X-8ND8cryg?si=D4l5qG4kLSWotnuv"},
+	{no: "Level 70", level: "Westland", song: "Outlaw", composer: "Creo", url: "https://youtu.be/8QAWb719Pzg?si=QNtUYGQ6MbV0jUAc"},
+	{no: "Co-creation Level 13", level: "Heartbreak", song: "Dreamland", composer: "SaMZIng", url: "https://soundcloud.com/samzingyeah/untitled3flp"},
+	{no: "Co-creation Bonus 12", level: "Furnace", song: "Gimme Snacks!", composer: "F-777", url: "https://youtu.be/D7cS-E3S0gI?si=Ve6qW9wAUyl6cjyX"},
+	{no: "Co-creation Level 14", level: "Radiant Shadow", song: "Volcano (VIP MIX)", composer: "F-777", url: "https://youtu.be/DkBzkXKJlsc?si=S-ENAunT79ZogThh"},
+	{no: "Co-creation Bonus 13", level: "Out of Control", song: "Dreamcatcher", composer: "Litchee & Broken Ring", url: "https://soundcloud.com/litchee_simon/dreamcatcher"},
+	{no: "Bonus 65", level: "Emerald City", song: "Agnostic", composer: "AiSS", url: "https://youtu.be/e2m4uOLCIuA?si=VBJGm75OZ_zIJaxs"},
+	{no: "Co-creation Bonus 14", level: "Kaleidoscope", song: "Move On", composer: "Zoftle", url: "https://youtu.be/PS3dg0XtCB0?si=oGYfSBFCHRu28M1r"},
+	{no: "Level 74", level: "Passionate Love", song: "Thrilling Saga", composer: "Zoftle", url: "https://youtu.be/PnbmnLqbYVI?si=uGiqnHRwP2KpKbVn"},
+	{no: "Co-creation Bonus 15", level: "Breaking", song: "Prism", composer: "F-777", url: "https://youtu.be/g0m7OAB_ewQ?si=IYg4amKP6IxRfifY"},
+	{no: "Level 75", level: "Canyon Encounters", song: "Fortuna for Tuna", composer: "MYUKKE.", url: "https://youtu.be/J0qU_LGTHeA?si=QFuFzdApBOWxMkAj"},
+	{no: "Co-creation Level 17", level: "Shining Waves", song: "Blue Reflection", composer: "SaMZIng & HJLL", url: "https://soundcloud.com/samzingyeah/hjll-samzing-blue-reflection"},
+	{no: "Co-creation Level 19", level: "Polar Exploration", song: "Breeze", composer: "SaMZIng", url: "https://soundcloud.com/samzingyeah/breeze"},
+	{no: "Bonus 71", level: "Totem", song: "Conga Forest", composer: "TDX", url: ""},
+	{no: "Level 79", level: "Legendary Racing", song: "Drift", composer: "Creo", url: "https://youtu.be/Onwxdg0YBhE?si=yDT83x-UAWa2c1Lv"},
+	{no: "Co-creation Bonus 19", level: "Beach Harbour", song: "Falcon Stomp", composer: "F-777", url: "https://youtu.be/eqyjlMnL9Xg?si=vX6DkrEEOg1lyjdY"},
+	{no: "Level 80", level: "Industrial Base", song: "FM (from Otter Space)", composer: "Litchee & Broken Ring", url: "https://soundcloud.com/litchee_simon/fm-from-otter-space"},
+	{no: "Bonus 73", level: "Blazing Tracks", song: "Gamer Rage", composer: "F-777", url: "https://youtu.be/WYKEaNninpk?si=7eegciM6llpJOkZG"},
+	{no: "Bonus 75", level: "Delusion Circle", song: "Mischief Maker", composer: "Hookington", url: "https://youtu.be/DNwF6OB79RY?si=d8iFbQrMXruG4UEF"},
+	{no: "Co-creation Bonus 22", level: "Celestial Vault", song: "Feel the World", composer: "Skelent_793", url: ""},
+	{no: "Bonus 83", level: "Martial World", song: "Kung Fu Battle", composer: "F-777", url: "https://youtu.be/9tQRhrnmRw8?si=mFvpmT7imRXrbCII"}
+    ];
+
+    function renderTable() {
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = '';
+
+        OriginalSongData.forEach(item => {
+            const tr = document.createElement('tr');
+            
+            tr.innerHTML = `
+                <td>${item.no}</td>
+                <td>${item.level}</td>
+                <td>${item.song}</td>
+                <td>${item.composer}</td>
+                <td>${item.url ? `<a href="${item.url}" target="_blank" title="${item.url}"><span class="link-icon theme-icon-img"></span></a>` : ''}</td>
+            `;
+            
+            tbody.appendChild(tr);
+        });
+    }
+
+    /* ==========================================================================
+       3. UI制御
+       ========================================================================== */
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    function changeLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.setAttribute('data-lang', lang);
+        localStorage.setItem('lang', lang);
+        const dict = i18nData[lang] || i18nData['en'];
+
+        document.querySelectorAll('.lang-select').forEach(s => s.value = lang);
+        document.getElementById('doc-title').innerText = dict.title;
+        document.getElementById('main-title').innerText = dict.title;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key]) el.innerText = dict[key];
+        });
+
+        document.getElementById('searchInput').placeholder = dict.search_placeholder;
+    }
+
+    function updateThemeUI(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-toggle-checkbox').forEach(cb => cb.checked = (theme === 'dark'));
+        document.querySelectorAll('.theme-toggle-label').forEach(lbl => lbl.innerText = (theme === 'dark') ? 'Dark' : 'Light');
+    }
+
+    function toggleTheme() {
+        const newTheme = (document.documentElement.getAttribute('data-theme') || 'light') === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+        updateThemeUI(newTheme);
+    }
+
+    function closeNavMenu() {
+        document.getElementById('drawerNav').classList.remove('active');
+        document.getElementById('menuOverlay').classList.remove('active');
+    }
+
+    function clearSearchInput() {
+        const input = document.getElementById('searchInput');
+        input.value = '';
+        handleSearch();
+        input.focus();
+    }
+
+    function resetSearch() {
+        clearSearchInput();
+    }
+
+    function handleSearch() {
+        const query = document.getElementById('searchInput').value.trim().toLowerCase();
+        const clearBtn = document.getElementById('searchClearBtn');
+
+        if (query.length > 0) clearBtn.style.display = 'block';
+        else clearBtn.style.display = 'none';
+
+        document.querySelectorAll('tbody tr').forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = (!query || text.includes(query)) ? '' : 'none';
+        });
+    }
+
+    // イベントリスナー設定
+    document.getElementById('menuToggleBtn').addEventListener('click', () => {
+        document.getElementById('drawerNav').classList.add('active');
+        document.getElementById('menuOverlay').classList.add('active');
+    });
+    ['closeMenuBtn', 'menuOverlay'].forEach(id => {
+        document.getElementById(id).addEventListener('click', closeNavMenu);
+    });
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) document.getElementById('siteHeader').classList.add('scrolled');
+        else document.getElementById('siteHeader').classList.remove('scrolled');
+
+        if (window.scrollY > 300) document.getElementById('backToTopBtn').classList.add('show');
+        else document.getElementById('backToTopBtn').classList.remove('show');
+    });
+
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    // 初期実行
+    updateThemeUI(localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    changeLanguage(currentLang);
+    renderTable();
+</script>
+
+</body>
+</html>
