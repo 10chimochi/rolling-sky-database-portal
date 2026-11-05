@@ -1000,7 +1000,7 @@
                     <!-- フィルタリングのプルダウンをプログレスバーの右側に移動 -->
                     <select id="statusFilter" class="filter-select" onchange="handleSearch()">
                         <option value="all" data-i18n="filter_all">All Status</option>
-                        <option value="incompleted" data-i18n="filter_incompleted">Incompleted</option>
+                        <option value="uncompleted" data-i18n="filter_uncompleted">Uncompleted</option>
                         <option value="basic-completed" data-i18n="filter_basic">Basic Completed</option>
                         <option value="perfect-completed" data-i18n="filter_perfect">Perfect Completed</option>
                     </select>
@@ -1111,7 +1111,7 @@
             menu_title: "Menu", language: "Language", dark_mode: "Dark Mode",
             confirm_clear_all: "Are you sure you want to uncheck all completed levels?",
             progress_title: "Total Completion Progress",
-            filter_all: "All Status", filter_incompleted: "Incompleted", filter_basic: "Basic Completed", filter_perfect: "Perfect Completed",
+            filter_all: "All Status", filter_uncompleted: "Uncompleted", filter_basic: "Basic Completed", filter_perfect: "Perfect Completed",
             modal_cancel: "Cancel", modal_confirm: "Clear All",
             legend_basic: "Basic Clear (Level Complete)", legend_perfect: "Perfect Clear (All Gems/Crowns)"
         },
@@ -1123,7 +1123,7 @@
             menu_title: "Menú", language: "Idioma", dark_mode: "Modo Oscuro",
             confirm_clear_all: "¿Estás seguro de que quieres desmarcar todos los niveles?",
             progress_title: "Progreso Total",
-            filter_all: "Todos los Estados", filter_incompleted: "No completado", filter_basic: "Básico completado", filter_perfect: "Perfecto completado",
+            filter_all: "Todos los Estados", filter_uncompleted: "No completado", filter_basic: "Básico completado", filter_perfect: "Perfecto completado",
             modal_cancel: "Cancelar", modal_confirm: "Quitar",
             legend_basic: "Completado Básico (Nivel completado)", legend_perfect: "Completado Perfecto (Todas las Gemas/Coronas)"
         },
@@ -1135,7 +1135,7 @@
             menu_title: "メニュー", language: "言語", dark_mode: "ダークモード",
             confirm_clear_all: "すべてのクリアチェックを解除しますか？",
             progress_title: "全体クリア進捗",
-            filter_all: "すべてのステータス", filter_incompleted: "未クリア", filter_basic: "基本クリア済", filter_perfect: "パーフェクトクリア済",
+            filter_all: "すべてのステータス", filter_uncompleted: "未クリア", filter_basic: "基本クリア済", filter_perfect: "パーフェクトクリア済",
             modal_cancel: "キャンセル", modal_confirm: "解除する",
             legend_basic: "基本クリア（ステージクリア）", legend_perfect: "パーフェクトクリア（全ジェム・王冠回収）"
         },
@@ -1147,7 +1147,7 @@
              menu_title: "菜单", language: "语言", dark_mode: "深色模式",
              confirm_clear_all: "确定要取消所有已通关的勾选吗?",
              progress_title: "总通关进度",
-             filter_all: "全部状态", filter_incompleted: "未通关", filter_basic: "基本已通关", filter_perfect: "完全已通关",
+             filter_all: "全部状态", filter_uncompleted: "未通关", filter_basic: "基本已通关", filter_perfect: "完全已通关",
              modal_cancel: "取消", modal_confirm: "确定清除",
              legend_basic: "基础通关（关卡完成）", legend_perfect: "完美通关（全部宝石/皇冠）"
         },
@@ -1159,7 +1159,7 @@
              menu_title: "菜單", language: "語言", dark_mode: "深色模式",
              confirm_clear_all: "確定要取消所有已通關的勾選嗎?",
              progress_title: "總通關進度",
-             filter_all: "全部狀態", filter_incompleted: "未通關", filter_basic: "基本已通關", filter_perfect: "完全已通關",
+             filter_all: "全部狀態", filter_uncompleted: "未通關", filter_basic: "基本已通關", filter_perfect: "完全已通關",
              modal_cancel: "取消", modal_confirm: "確定清除",
              legend_basic: "基礎通關（關卡完成）", legend_perfect: "完美通關（全部寶石/皇冠）"
         },
@@ -1171,7 +1171,7 @@
             menu_title: "메뉴", language: "언어", dark_mode: "다크 모드",
             confirm_clear_all: "모든 클리어 체크를 해제하시겠습니까?",
             progress_title: "전체 클리어 진행도",
-            filter_all: "모든 상태", filter_incompleted: "미클리어", filter_basic: "기본 클리어", filter_perfect: "퍼펙트 클리어",
+            filter_all: "모든 상태", filter_uncompleted: "미클리어", filter_basic: "기본 클리어", filter_perfect: "퍼펙트 클리어",
             modal_cancel: "취소", modal_confirm: "해제",
             legend_basic: "기본 클리어 (스테이지 완료)", legend_perfect: "퍼펙트 클리어 (모든 보석/왕관 회수)"
         }
@@ -1730,7 +1730,7 @@
             const matchesQuery = !query || name.includes(query);
             let matchesStatus = true;
  
-            if (filterStatus === 'incompleted') {
+            if (filterStatus === 'uncompleted') {
                 matchesStatus = !isBasic;
             } else if (filterStatus === 'basic-completed') {
                 matchesStatus = isBasic && !isPerfect;
