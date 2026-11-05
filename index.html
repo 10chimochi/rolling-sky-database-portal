@@ -984,7 +984,6 @@
         <div class="search-row">
             <div class="search-box search-input-wrapper">
                 <input type="text" id="searchInput" placeholder="Search level name..." oninput="handleSearch()">
-                <button class="search-clear-icon" id="searchClearBtn" onclick="clearSearchInput()" title="Clear text">&times;</button>
             </div>
 
             <button class="reset-btn" onclick="resetSearch()" data-i18n="clear_btn">Clear Search</button>
@@ -1714,11 +1713,6 @@
     function handleSearch() {
         const query = document.getElementById('searchInput').value.trim().toLowerCase();
         const filterStatus = document.getElementById('statusFilter').value;
-        const clearBtn = document.getElementById('searchClearBtn');
-
-        // 消去ボタンの表示制御
-        if (query.length > 0) clearBtn.style.display = 'block';
-        else clearBtn.style.display = 'none';
 
 	if (!query) {
 	    document.querySelectorAll('.stage-link.search-match').forEach(link => {
