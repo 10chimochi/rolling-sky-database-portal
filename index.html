@@ -11,6 +11,10 @@
     <link rel="icon" href="Rolling_Sky_title_logo.ico" type="image/x-icon">
     <link rel="shortcut icon" href="Rolling_Sky_title_logo.ico" type="image/x-icon">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         /* ==========================================================================
            1. CSS変数（ライト／ダークテーマ定義）
@@ -86,7 +90,7 @@
            2. 基本要素 & レイアウト
            ========================================================================== */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "微软雅黑", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -1716,6 +1720,12 @@
         if (query.length > 0) clearBtn.style.display = 'block';
         else clearBtn.style.display = 'none';
 
+	if (!query) {
+	    document.querySelectorAll('.stage-link.search-match').forEach(link => {
+		link.classList.remove('search-match');
+	    });
+	}
+
         // 各ステージアイテムのフィルタリング
         document.querySelectorAll('.stage-item[data-stage-name]').forEach(wrapper => {
             const name = wrapper.dataset.stageName;
@@ -1749,8 +1759,16 @@
         // テーブル行全体の制御
         document.querySelectorAll('#levels-tbody tr').forEach(row => {
             if (row.classList.contains('category-header-row')) return;
-            const text = row.innerText.toLowerCase();
-            row.style.display = (!query || text.includes(query)) ? '' : 'none';
+            
+            let targetText = "";
+            const cells = row.querySelectorAll('td');
+            [1, 4, 7].forEach(index => {
+                if (cells[index]) {
+                    targetText += " " + cells[index].innerText.toLowerCase();
+                }
+            });
+
+            row.style.display = (!query || targetText.includes(query)) ? '' : 'none';
         });
     }
 
