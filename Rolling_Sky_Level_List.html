@@ -1177,7 +1177,7 @@
         }
     };
 
-    const deletedStages = new Set(["Alone", "Alone Remix", "Faded", "Faded Remix", "Alone II", "The Spectre", "The Spectre Remix"]);
+    const deletedStages = new Set(["Alone", "Alone Remix", "Faded", "Faded Remix", "Alone II", "The Spectre", "The Spectre Remix", "Polar Night Wandering/Old"]);
 
     /* ==========================================================================
        2. データの保持 & プログレス・フィルタ更新
@@ -1336,17 +1336,17 @@
         "Official Levels": {
             "normal": {
                 1: ["Cloud (A)", "Sunny (A)", "Cloud (B)", "Hoop Dream (A)", "Tropical Tides (A)", "Sweet Paradise", "Massif (A)", "Starfield", "The Winter", "Massif (B)", "Tsunami", "Sunny (B)"],
-                2: ["Sky", "Massif (C)", "Wilderness Aftertaste", "Laser", "Mental Rave", "Fairy Tale", "Illusion (C)", "Snowy Night", "Delusion Circle", "Faster", "Halloween Escape", "Golden Christmas", "Cubic Craft", "Temple Fair", "8Bits"],
+                2: ["Sky", "Massif (C)", "Wilderness Aftertaste", "Workshop", "Laser", "Mental Rave", "Fairy Tale", "Illusion (C)", "Faster", "Snowy Night", "Delusion Circle", "Halloween Escape", "Golden Christmas", "Cubic Craft",  "8Bits"],
                 3: ["Buoyancy Field", "Stars (B)", "Time Machine", "Accumulator", "Gemini", "Sea World", "Romantic Afternoon", "Forest (A)", "Monody (A)", "Mysterious Trail", "Forest (B)", "Totem", "Championship", "Fortification Zero", "Fireworks", "Crisscross", "Convection Domain", "Ghost Dance", "Trick or Treat", "Desert"],
-                4: ["Volcano", "Christmas Gospel", "Storms & Love", "Monody (B)", "Westland", "Battle Bastion", "Delicacy Temptation", "Dynamic Cube", "Foggy City", "Alien Remnants", "Ghroth", "Palace Ruins", "Goblin Town (A)", "Aurora Tour", "Digital Matrix", "Reflection Corridor", "Goblin Town (B)", "Ignite", "Kingdom War", "VR Fairyland", "Twinkling"],
-                5: ["Legendary Racing", "Passionate Love", "Monster City", "Chronos", "Birthday Party", "Kepler's Dream", "Enchanted Lamp", "Mecha", "Toy Blocks", "Chess Fortress", "The Sea", "Spring Festival", "Fission", "Egypt", "Amusement Park", "Halloween", "Castle in the Sky", "Microchip", "Emerald City", "Mechanical Power", "Dino Disco (B)"],
+                4: ["Volcano", "Christmas Gospel", "Storms & Love", "Monody (B)", "Westland", "Battle Bastion", "Delicacy Temptation", "Dynamic Cube", "Foggy City", "Alien Remnants", "Ghroth", "Palace Ruins", "Goblin Town (A)", "Aurora Tour", "Reflection Corridor", "Goblin Town (B)", "Ignite", "Kingdom War", "VR Fairyland", "Twinkling", "Digital Matrix"],
+                5: ["Passionate Love", "Monster City", "Chronos", "Birthday Party", "Kepler's Dream", "Enchanted Lamp", "Mecha", "Toy Blocks", "Chess Fortress", "The Sea", "Spring Festival", "Fission", "Egypt", "Amusement Park", "Halloween", "Castle in the Sky", "Microchip", "Emerald City", "Mechanical Power", "Dino Disco (B)"],
                 6: ["The Wizard of Oz", "Psychedelic Music", "1UP", "Red Empire", "MotiF-east", "Halloween Night", "New Year", "Happy", "World Cup", "Extraterrestrial Duel", "Sunset Sword Tomb", "Magic House", "Competition Park", "Pipeline"]
             },
             "plus": {
-                1: ["Illusion (A)", "Hoop Dream (B)", "Tropical Tides (B)", "Venus", "Skeleton Party", "Cobweb", "The Eye of Horus", "Atomic Energy", "Illusion (B)", "Jack-O'-Lantern", "Eternity", "Space Station", "Clown Park", "Workshop", "DelighT-une"],
-                2: ["Stars (A)", "Djinni", "Falling Blossoms", "JOKER", "Desolate Area", "Eternal Journey", "Dazzle", "Samba", "The Shadow Warrior", "Martial World", "Football Field"],
-                3: ["Candy", "Otherworld", "Kung Fu", "Rainbow Castle", "Pirate Ship", "Midnight-Go-Round", "Abyss Trap", "Iron Tide", "The Brazil Carnival", "Tactic Core", "Collapsed Stage", "Game Zone", "Moonlight Swordsman", "Unlock the Future", "Canyon Encounters", "Matrix", "Fantastic Sweet House", "Phantom", "Anniversary", "Departure Prelude", "Revival"],
-                4: ["City", "Sci-Tech", "Chieftain", "Wasteland Wildsands", "Interstellar Leap", "Tetris", "Circus", "Reggae", "Blazing Tracks", "Naval Battle", "Dino Disco (A)", "Morning Dawn", "Relics", "Varying Christmas", "Lost City", "Street Basketball", "The Day of the Dead", "Sunset Glow", "Monster Chorus", "Hub", "Halloween Missing Case", "Zone 22"],
+                1: ["Illusion (A)", "Hoop Dream (B)", "Tropical Tides (B)", "Venus", "Skeleton Party", "Cobweb", "The Eye of Horus", "Illusion (B)", "Jack-O'-Lantern", "Eternity", "Space Station", "Atomic Energy", "Clown Park", "DelighT-une"],
+                2: ["Temple Fair", "Stars (A)", "Djinni", "Falling Blossoms", "JOKER", "Desolate Area", "Eternal Journey", "Dazzle", "Samba", "The Shadow Warrior", "Martial World", "Haunted Hunt", "Football Field"],
+                3: ["Candy", "Otherworld", "Kung Fu", "Rainbow Castle", "Pirate Ship", "Midnight-Go-Round", "Abyss Traps", "Iron Tide", "The Brazil Carnival", "Tactic Core", "Collapsed Stage", "Game Zone", "Moonlight Swordsman", "Unlock the Future", "Canyon Encounters", "Matrix", "Fantastic Sweet House", "Phantom", "Anniversary", "Departure Prelude", "Revival"],
+                4: ["City", "Sci-Tech", "Chieftain", "Wasteland Wildsands", "Interstellar Leap", "Tetris", "Circus", "Reggae", "Blazing Tracks", "Naval Battle", "Dino Disco (A)", "Morning Dawn", "Relics", "Varying Christmas", "Lost City", "Street Basketball", "The Day of the Dead", "Sunset Glow", "Monster Chorus", "Hub", "Legendary Racing", "Halloween Missing Case", "Zone 22"],
                 5: ["Rhythm Party", "Flower Dance", "Future Stronghold", "Industrial Base", "Cthulhu", "Reindeers' Gift", "Poker", "Grotesque Playhouse", "Deep Space", "Midnight Carnival", "Ghost Samurai", "Mirrorworld", "E-labyrinth", "Christmas", "Dinosaur Valley", "Horizon Cruise", "Neon", "American Football", "Steam Era", "Phantom Thief", "Robotoy", "Cube", "Unending Voyage"],
                 6: ["Nirvana", "Happy Birthday", "Lov-E", "The 4th Anniversary", "Auspicious Jade Rabbit", "Our Story Onwards", "TiMe-mory"]
             }
@@ -1403,15 +1403,15 @@
         {"m_no": "Level 26", "m_name": "Egypt", "m_diff": "★5", "b1_no": "Bonus 14", "b1_name": "The Eye of Horus", "b1_diff": "★1", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 27", "m_name": "Circus", "m_diff": "★5", "b1_no": "Bonus 15", "b1_name": "Clown Park", "b1_diff": "★1", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 28", "m_name": "World Cup", "m_diff": "★6", "b1_no": "Bonus 16", "b1_name": "Football Field", "b1_diff": "★2", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Level 29", "m_name": "Alone", "m_diff": "", "b1_no": "Bonus 17", "b1_name": "Alone Remix", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Level 30", "m_name": "Faded", "m_diff": "", "b1_no": "Bonus 18", "b1_name": "Faded Remix", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
+        {"m_no": "Level 29", "m_name": "Alone", "m_diff": "★3+", "b1_no": "Bonus 17", "b1_name": "Alone Remix", "b1_diff": "★2+", "b2_no": "", "b2_name": "", "b2_diff": ""},
+        {"m_no": "Level 30", "m_name": "Faded", "m_diff": "★3", "b1_no": "Bonus 18", "b1_name": "Faded Remix", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 31", "m_name": "Happy Birthday", "m_diff": "★6", "b1_no": "Bonus 19", "b1_name": "Anniversary", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 32", "m_name": "Halloween Night", "m_diff": "★6", "b1_no": "Bonus 20", "b1_name": "Skeleton Party", "b1_diff": "★1", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 33", "m_name": "Faster", "m_diff": "★2", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 34", "m_name": "Golden Christmas", "m_diff": "★2", "b1_no": "Bonus 21", "b1_name": "Christmas Gospel", "b1_diff": "★4", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Level 35", "m_name": "Alone II", "m_diff": "", "b1_no": "Bonus 22", "b1_name": "Lost City", "b1_diff": "★4", "b2_no": "Bonus 54", "b2_name": "Venus", "b2_diff": "★1"},
+        {"m_no": "Level 35", "m_name": "Alone II", "m_diff": "★4+", "b1_no": "Bonus 22", "b1_name": "Lost City", "b1_diff": "★4", "b2_no": "Bonus 54", "b2_name": "Venus", "b2_diff": "★1"},
         {"m_no": "Level 36", "m_name": "Spring Festival", "m_diff": "★5", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Level 37", "m_name": "The Spectre", "m_diff": "", "b1_no": "Bonus 23", "b1_name": "The Spectre Remix", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
+        {"m_no": "Level 37", "m_name": "The Spectre", "m_diff": "★5", "b1_no": "Bonus 23", "b1_name": "The Spectre Remix", "b1_diff": "★6", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 38", "m_name": "American Football", "m_diff": "★5", "b1_no": "Bonus 24", "b1_name": "Championship", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 39", "m_name": "Naval Battle", "m_diff": "★4", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 40", "m_name": "Microchip", "m_diff": "★5", "b1_no": "Bonus 25", "b1_name": "Digital Matrix", "b1_diff": "★4", "b2_no": "", "b2_name": "", "b2_diff": ""},
@@ -1449,12 +1449,12 @@
         {"m_no": "Level 72", "m_name": "Pipeline", "m_diff": "★6", "b1_no": "Bonus 67", "b1_name": "Hub", "b1_diff": "★4", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 73A\nLevel 73B", "m_name": "Revival\nNirvana", "m_diff": "★3\n★6", "b1_no": "Bonus 66", "b1_name": "Time Machine", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 74", "m_name": "Passionate Love", "m_diff": "★5", "b1_no": "Bonus 68", "b1_name": "Romantic Afternoon", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Level 75", "m_name": "Canyon Encounters", "m_diff": "★3", "b1_no": "Bonus 69", "b1_name": "Abyss Trap", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
+        {"m_no": "Level 75", "m_name": "Canyon Encounters", "m_diff": "★3", "b1_no": "Bonus 69", "b1_name": "Abyss Traps", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 76", "m_name": "Robotoy", "m_diff": "★5", "b1_no": "Bonus 70", "b1_name": "Accumulator", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 77", "m_name": "Chieftain", "m_diff": "★4", "b1_no": "Bonus 71", "b1_name": "Totem", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 78", "m_name": "Amusement Park", "m_diff": "★5", "b1_no": "Bonus 72", "b1_name": "Midnight-Go-Round", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Level 79", "m_name": "Legendary Racing", "m_diff": "★5", "b1_no": "Bonus 73", "b1_name": "Blazing Tracks", "b1_diff": "★4", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Level 80", "m_name": "Industrial Base", "m_diff": "★5", "b1_no": "Bonus 74", "b1_name": "Workshop", "b1_diff": "★1", "b2_no": "", "b2_name": "", "b2_diff": ""},
+        {"m_no": "Level 79", "m_name": "Legendary Racing", "m_diff": "★4", "b1_no": "Bonus 73", "b1_name": "Blazing Tracks", "b1_diff": "★4", "b2_no": "", "b2_name": "", "b2_diff": ""},
+        {"m_no": "Level 80", "m_name": "Industrial Base", "m_diff": "★5", "b1_no": "Bonus 74", "b1_name": "Workshop", "b1_diff": "★2", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 81", "m_name": "Magic House", "m_diff": "★6", "b1_no": "Bonus 75", "b1_name": "Delusion Circle", "b1_diff": "★2", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 82", "m_name": "Toy Blocks", "m_diff": "★5", "b1_no": "Bonus 76", "b1_name": "Cubic Craft", "b1_diff": "★2", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 83", "m_name": "Cthulhu", "m_diff": "★5", "b1_no": "Bonus 77", "b1_name": "Ghroth", "b1_diff": "★4", "b2_no": "", "b2_name": "", "b2_diff": ""},
@@ -1471,7 +1471,7 @@
         {"m_no": "Level 94", "m_name": "Alien Remnants", "m_diff": "★4", "b1_no": "Bonus 89", "b1_name": "Extraterrestrial Duel", "b1_diff": "★6", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 95", "m_name": "Grotesque Playhouse", "m_diff": "★5", "b1_no": "Bonus 90", "b1_name": "Collapsed Stage", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Level 96A\nLevel96B", "m_name": "Departure Prelude\nOur Story Onwards", "m_diff": "★3\n★6", "b1_no": "Bonus 91", "b1_name": "Unending Voyage", "b1_diff": "★5", "b2_no": "", "b2_name": "", "b2_diff": ""},
-	{"m_no": "Level 97", "m_name": "Halloween Missing Case", "m_diff": "★4", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
+	{"m_no": "Level 97", "m_name": "Halloween Missing Case", "m_diff": "★4", "b1_no": "Bonus 92", "b1_name": "Haunted Hunt", "b1_diff": "★2", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Mini Level 1A\nMini Level 1B", "m_name": "Tropical Tides (A)\nTropical Tides (B)", "m_diff": "★1\n★1", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Mini Level 2", "m_name": "Gemini", "m_diff": "★3", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Mini Level 3", "m_name": "Forest (A)", "m_diff": "★3", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
@@ -1481,7 +1481,7 @@
         {"m_no": "Event Level 3", "m_name": "sparT ssybA", "m_diff": "😄4", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Event Level 4", "m_name": "Diagonal Cup", "m_diff": "😄6", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Fanmade Level 1", "m_name": "Cave", "m_diff": "★6", "b1_no": "Bonus 2", "b1_name": "Earth Core Adventure", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Fanmade Level 2", "m_name": "The Chaos", "m_diff": "★6", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
+	{"m_no": "Fanmade Level 2", "m_name": "The Chaos", "m_diff": "★6", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Fanmade Level 3", "m_name": "Successful Person", "m_diff": "★3", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Fanmade Level 4", "m_name": "A Dream of 7 Years", "m_diff": "★6", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Fanmade Level 5", "m_name": "Virtual Futuristic Network", "m_diff": "★6", "b1_no": "", "b1_name": "", "b1_diff": "", "b2_no": "", "b2_name": "", "b2_diff": ""},
@@ -1501,12 +1501,12 @@
         {"m_no": "Co-creation Level 11", "m_name": "Starlight Desert", "m_diff": "★5", "b1_no": "Bonus 11", "b1_name": "Firefly Valley", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Co-creation Level 12", "m_name": "Industrial Age", "m_diff": "★4", "b1_no": "Bonus 12", "b1_name": "Furnace", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Co-creation Level 13", "m_name": "Heartbreak", "m_diff": "★2", "b1_no": "Bonus 13", "b1_name": "Out of Control", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Co-creation Level 14", "m_name": "Radiant Shadow", "m_diff": "★5", "b1_no": "Bonus 14", "b1_name": "Kaleidoscope", "b1_diff": "★2", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Co-creation Level 15", "m_name": "Fruity Paradise", "m_diff": "★5", "b1_no": "Bonus 16", "b1_name": "Sugarfall", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
+	{"m_no": "Co-creation Level 14", "m_name": "Radiant Shadow", "m_diff": "★5", "b1_no": "Bonus 14", "b1_name": "Kaleidoscope", "b1_diff": "★2", "b2_no": "", "b2_name": "", "b2_diff": ""},
+	{"m_no": "Co-creation Level 15", "m_name": "Fruity Paradise", "m_diff": "★5", "b1_no": "Bonus 16", "b1_name": "Sugarfall", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Co-creation Level 16", "m_name": "NEWBORN", "m_diff": "★5", "b1_no": "Bonus 15", "b1_name": "Breaking", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Co-creation Level 17", "m_name": "Shining Waves", "m_diff": "★4", "b1_no": "Bonus 17", "b1_name": "Sunshine Ocean", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Co-creation Level 18", "m_name": "Lighthouse Alley", "m_diff": "★2", "b1_no": "Bonus 19", "b1_name": "Beach Harbour", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
-        {"m_no": "Co-creation Level 19", "m_name": "Polar Exploration", "m_diff": "★5", "b1_no": "Bonus 18", "b1_name": "Polar Night Wandering", "b1_diff": "★4", "b2_no": "", "b2_name": "", "b2_diff": ""},
+        {"m_no": "Co-creation Level 19", "m_name": "Polar Exploration", "m_diff": "★5", "b1_no": "Bonus 18A\nBonus 18B", "b1_name": "Polar Night Wandering/Old\nPolar Night Wandering", "b1_diff": "★4\n★4", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Co-creation Level 20", "m_name": "Twilight Karst Cave", "m_diff": "★4", "b1_no": "Bonus 20", "b1_name": "Axolo-Waltz", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Co-creation Level 21", "m_name": "Trailblaze", "m_diff": "★6", "b1_no": "Bonus 21", "b1_name": "Cometbound", "b1_diff": "★4", "b2_no": "", "b2_name": "", "b2_diff": ""},
         {"m_no": "Co-creation Level 22", "m_name": "City of Tomorrow", "m_diff": "★6", "b1_no": "Bonus 22", "b1_name": "Celestial Vault", "b1_diff": "★3", "b2_no": "", "b2_name": "", "b2_diff": ""},
